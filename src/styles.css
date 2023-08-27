@@ -1,0 +1,12 @@
+footer {
+  color: #0b5ed7;
+  font-size: 13px;
+  margin: 13px auto 0px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.code-link {
+  font-weight: 800;
+  text-decoration: none;
+}
