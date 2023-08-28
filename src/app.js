@@ -1,33 +1,33 @@
-const num = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
-const suite = ["hearts", "spades", "clubs", "diamonds"];
+const num = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+const suit = ["♥️", "♠️", "♣️", "♦️"];
+// var deck = newArray();
 const dealerCards = [];
 const playerCards = [];
 
-const randomNum = num[Math.floor(Math.random() * 13)];
-
 function getDealerCards() {
-  dealerCards.push(randomNum);
-  let dealerCard = dealerCards[0];
-  console.log(dealerCard);
-  let dealer = document.querySelector("#dealer");
-  dealer.innerHTML = `${dealerCard}`;
-  // return dealerCards;
+  var randomNum = num[Math.floor(Math.random() * 13)];
+  var randomSuit = suit[Math.floor(Math.random() * 4)];
+  $("#dealer").text(`${randomNum} ${randomSuit}`);
+  //   dealerCards.push(randomNum);
+  //   dealerCards.push(randomSuit);
+  //   let dealerCard = dealerCards[0];
+  //   console.log(dealerCards);
 }
 
 function getPlayerCards() {
-  playerCards.push(randomNum);
-  let player = document.querySelector("#player");
-  player.innerHTML = `${playerCards[0]}`;
-  //   return playerCards;
+  var randomNum = num[Math.floor(Math.random() * 13)];
+  var randomSuit = suit[Math.floor(Math.random() * 4)];
+  $("#player").text(`${randomNum} ${randomSuit}`);
+
+  //   playerCards.push(randomNum);
+  //   let playerCard = playerCards[0];
+  //   //   console.log(playerCard);
 }
 
-// function dealCards() {
-//   getDealerCards();
-//   getPlayerCards();
-//   getPlayerCards();
-//   return;
-// }
+function dealCards() {
+  getDealerCards();
+  getPlayerCards();
+}
 
 // console.log(getDealerCards());
-getDealerCards();
-getPlayerCards();
+// dealCards();
