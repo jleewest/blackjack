@@ -1,39 +1,62 @@
 const num = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
 const suit = ["♥️", "♠️", "♣️", "♦️"];
+const cardArray = [];
 const dealerCards = [];
 const playerCards = [];
+
+function getCardValue(num) {
+  var value = 0;
+  if (num === "J" || num === "Q" || num === "K") {
+    value = 10;
+  } else if (num === "A") {
+    value = 11;
+  } else {
+    value = num;
+  }
+  return value;
+}
 
 function getCard() {
   var randomNum = num[Math.floor(Math.random() * 13)];
   var randomSuit = suit[Math.floor(Math.random() * 4)];
-  return [randomNum, randomSuit];
+  var value = getCardValue(randomNum);
+  var card = randomNum + randomSuit;
+  if (cardArray.includes(card) === true) {
+    getCard();
+  } else {
+    cardArray.push(card);
+    return [card, value];
+  }
 }
 
 function getPlayerCard1() {
   var card = getCard();
-  $("#playerCard1").text(`${card[0]} ${card[1]}`);
-
-  //   playerCards.push(randomNum);
-  //   let playerCard = playerCards[0];
-  //   //   console.log(playerCard);
+  $("#playerCard1").text(`${card[0]}`);
+  playerCards.push(card[1]);
 }
+
 function getPlayerCard2() {
   var card = getCard();
-  $("#playerCard2").text(`${card[0]} ${card[1]}`);
+  $("#playerCard2").text(`${card[0]}`);
+  playerCards.push(card[1]);
+  let sum = playerCards.reduce((a, b) => a + b);
+  $("#playerTotal").text(`${sum}`);
 }
 
 function getDealerCard1() {
   var card = getCard();
-  $("#dealerCard").text(`${card[0]} ${card[1]}`);
-  //   dealerCards.push(randomNum);
-  //   dealerCards.push(randomSuit);
-  //   let dealerCard = dealerCards[0];
-  //   console.log(dealerCards);
+  $("#dealerCard").text(`${card[0]}`);
+  dealerCards.push(card[1]);
+  let sum = dealerCards.reduce((a, b) => a + b);
+  $("#dealerTotal").text(`${sum}`);
 }
 
 function getDealerCard2() {
   var card = getCard();
-  $("#dealerCard2").text(`${card[0]} ${card[1]}`);
+  $("#dealerCard2").text(`${card[0]}`);
+  dealerCards.push(card[1]);
+  sum = dealerCards.reduce((a, b) => a + b);
+  $("#dealerTotal").text(`${sum}`);
 }
 
 function dealCards() {
@@ -45,16 +68,22 @@ function dealCards() {
 function hitCard() {
   var card = getCard();
   var newCard = $("<div>");
-  newCard.text(`${card[0]} ${card[1]}`);
+  newCard.text(`${card[0]}`);
   newCard.addClass("col card");
   $("#playerHand").append(newCard);
+  playerCards.push(card[1]);
+  sum = playerCards.reduce((a, b) => a + b);
+  $("#playerTotal").text(`${sum}`);
 }
 
 function standCard() {
   getDealerCard2();
   var card = getCard();
   var newCard = $("<div>");
-  newCard.text(`${card[0]} ${card[1]}`);
+  newCard.text(`${card[0]}`);
   newCard.addClass("col card");
   $("#dealerHand").append(newCard);
+  dealerCards.push(card[1]);
+  sum = dealerCards.reduce((a, b) => a + b);
+  $("#dealerTotal").text(`${sum}`);
 }
