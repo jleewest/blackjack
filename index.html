@@ -16,15 +16,59 @@
   <body>
     <div class="container">
       <h1>♦️♠️♣️♥️ Blackjack ♥️♣️♠️♦️</h1>
-      <input type="button" id="btnDeal" value="Deal" onclick="dealCards()" />
-      <div class="row">
-        <div class="col">
-          <h2>Dealer</h2>
-          <div id="dealer"></div>
+      <div class="row buttons-box">
+        <div class="col justify-content-center">
+          <input
+            type="button"
+            value="Restart"
+            class="btn btn-primary shadow-sm"
+            onclick="window.location.reload()"
+          />
         </div>
-        <div class="col">
-          <h2>Player</h2>
-          <div id="player"></div>
+        <div class="col justify-content-center">
+          <input
+            type="button"
+            value="Deal"
+            class="btn btn-primary shadow-sm"
+            onclick="dealCards()"
+          />
+        </div>
+        <div class="col justify-content-center"></div>
+        <div class="col justify-content-center">
+          <input
+            type="button"
+            value="Hit"
+            class="btn btn-primary shadow-sm"
+            onclick="addCard()"
+          />
+        </div>
+        <div class="col justify-content-center">
+          <input
+            type="button"
+            value="Stand"
+            class="btn btn-primary shadow-sm"
+            onclick=""
+          />
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Player</h2>
+            <div class="row card-box" id="playerHand">
+              <div class="col card" id="playerCard1"></div>
+              <div class="col card" id="playerCard2"></div>
+            </div>
+            <p>Total:</p>
+          </div>
+          <div class="col">
+            <h2>Dealer</h2>
+            <div class="row card-box" id="dealerHand">
+              <div class="col card" id="dealerCard"></div>
+              <div class="col card" id="dealerCard2"></div>
+            </div>
+            <p>Total:</p>
+          </div>
         </div>
       </div>
       <footer>

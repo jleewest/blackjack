@@ -4,20 +4,29 @@ const suit = ["♥️", "♠️", "♣️", "♦️"];
 const dealerCards = [];
 const playerCards = [];
 
-function getDealerCards() {
+function getDealerCard() {
   var randomNum = num[Math.floor(Math.random() * 13)];
   var randomSuit = suit[Math.floor(Math.random() * 4)];
-  $("#dealer").text(`${randomNum} ${randomSuit}`);
+  $("#dealerCard").text(`${randomNum} ${randomSuit}`);
   //   dealerCards.push(randomNum);
   //   dealerCards.push(randomSuit);
   //   let dealerCard = dealerCards[0];
   //   console.log(dealerCards);
 }
 
-function getPlayerCards() {
+function getPlayerCard1() {
   var randomNum = num[Math.floor(Math.random() * 13)];
   var randomSuit = suit[Math.floor(Math.random() * 4)];
-  $("#player").text(`${randomNum} ${randomSuit}`);
+  $("#playerCard1").text(`${randomNum} ${randomSuit}`);
+
+  //   playerCards.push(randomNum);
+  //   let playerCard = playerCards[0];
+  //   //   console.log(playerCard);
+}
+function getPlayerCard2() {
+  var randomNum = num[Math.floor(Math.random() * 13)];
+  var randomSuit = suit[Math.floor(Math.random() * 4)];
+  $("#playerCard2").text(`${randomNum} ${randomSuit}`);
 
   //   playerCards.push(randomNum);
   //   let playerCard = playerCards[0];
@@ -25,8 +34,18 @@ function getPlayerCards() {
 }
 
 function dealCards() {
-  getDealerCards();
-  getPlayerCards();
+  getDealerCard();
+  getPlayerCard1();
+  getPlayerCard2();
+}
+
+function addCard() {
+  var randomNum = num[Math.floor(Math.random() * 13)];
+  var randomSuit = suit[Math.floor(Math.random() * 4)];
+  var newCard = $("<div>");
+  newCard.text(`${randomNum} ${randomSuit}`);
+  newCard.addClass("col card");
+  $("#playerHand").append(newCard);
 }
 
 // console.log(getDealerCards());
