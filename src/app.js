@@ -74,10 +74,14 @@ function hitCard() {
   playerCards.push(card[1]);
   sum = playerCards.reduce((a, b) => a + b);
   $("#playerTotal").text(`${sum}`);
+  if (sum > 21) {
+    alert(
+      `Sorry, you bust! Your total is ${sum}. Push "Restart" to try another hand.`
+    );
+  }
 }
 
-function standCard() {
-  getDealerCard2();
+function getAnotherCard() {
   var card = getCard();
   var newCard = $("<div>");
   newCard.text(`${card[0]}`);
@@ -86,4 +90,33 @@ function standCard() {
   dealerCards.push(card[1]);
   sum = dealerCards.reduce((a, b) => a + b);
   $("#dealerTotal").text(`${sum}`);
+}
+
+function compareHands() {
+  player = $("#playerTotal").text();
+  dealer = $("#dealerTotal").text();
+  if (player > dealer) {
+    alert("Congratulation, you win!");
+  } else if (player === dealer) {
+    alert("It's a draw! No winner...");
+  } else
+    alert(
+      `Sorry, the dealer won this round. Press "Restart" to try another hand.`
+    );
+}
+
+function checkDealerHand() {
+  if (sum > 21) {
+    alert(`Congratulation, the dealer bust -- you won the game!`);
+  } else if (sum < 15) {
+    getAnotherCard();
+    checkDealerHand();
+  } else {
+    compareHands();
+  }
+}
+
+function standCard() {
+  getDealerCard2();
+  checkDealerHand();
 }
