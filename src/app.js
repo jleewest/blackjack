@@ -73,6 +73,11 @@ function hitCard() {
   $("#playerHand").append(newCard);
   playerCards.push(card[1]);
   sum = playerCards.reduce((a, b) => a + b);
+  if (sum > 21 && playerCards.includes(11) === true) {
+    sum = sum - 10;
+  } else {
+    return sum;
+  }
   $("#playerTotal").text(`${sum}`);
   if (sum > 21) {
     alert(
@@ -89,6 +94,11 @@ function getAnotherCard() {
   $("#dealerHand").append(newCard);
   dealerCards.push(card[1]);
   sum = dealerCards.reduce((a, b) => a + b);
+  if (sum > 21 && dealerCards.includes(11) === true) {
+    sum = sum - 10;
+  } else {
+    return sum;
+  }
   $("#dealerTotal").text(`${sum}`);
 }
 
@@ -96,9 +106,9 @@ function compareHands() {
   player = $("#playerTotal").text();
   dealer = $("#dealerTotal").text();
   if (player > dealer) {
-    alert("Congratulation, you win!");
+    alert(`Congratulation, you win! Push "Restart" to play again.`);
   } else if (player === dealer) {
-    alert("It's a draw! No winner...");
+    alert(`It's a draw! No winner...Push "Restart" to try another hand.`);
   } else
     alert(
       `Sorry, the dealer won this round. Press "Restart" to try another hand.`
@@ -108,7 +118,7 @@ function compareHands() {
 function checkDealerHand() {
   if (sum > 21) {
     alert(`Congratulation, the dealer bust -- you won the game!`);
-  } else if (sum < 15) {
+  } else if (sum < 18) {
     getAnotherCard();
     checkDealerHand();
   } else {
