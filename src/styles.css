@@ -1,12 +1,44 @@
+body {
+  background-image: url(../src/images/blackjack.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.outer-container {
+  background: rgba(224, 224, 224, 0.07);
+  border-radius: 10px;
+  margin: 40px;
+  padding: 10px;
+}
 h1 {
   border: 5px solid black;
   border-radius: 10px;
+  color: black;
+  font-family: "Cookie", cursive;
+  font-size: calc(2.375rem + 1.5vw);
   margin: 20px;
   padding: 20px;
   text-align: center;
 }
+h2 {
+  color: black;
+}
+.rules {
+  color: black;
+  font-family: "Cookie", cursive;
+  font-size: 22px;
+  line-height: 7px;
+  margin: 25px auto;
+  text-align: center;
+}
+.rules-link {
+  color: black;
+  text-decoration: none;
+}
+.rules-link:hover {
+  text-decoration: underline;
+}
 .buttons-box {
-  margin: 25px;
+  margin: 40px 25px;
 }
 .card-box {
   border: 2px solid black;
