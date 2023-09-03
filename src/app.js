@@ -33,6 +33,7 @@ function playerSum() {
   let sum = playerCards.reduce((a, b) => a + b);
   if (sum > 21 && playerCards.includes(11) === true) {
     sum = sum - 10;
+    return sum;
   } else {
     return sum;
   }
@@ -57,6 +58,7 @@ function dealerSum() {
   let sum = dealerCards.reduce((a, b) => a + b);
   if (sum > 21 && dealerCards.includes(11) === true) {
     sum = sum - 10;
+    return sum;
   } else {
     return sum;
   }
@@ -74,8 +76,10 @@ function getDealerCard() {
 }
 
 function dealCards() {
+  $("#playerHand").addClass("card-box");
   getPlayerCard();
   getPlayerCard();
+  $("#dealerHand").addClass("card-box");
   getDealerCard();
 }
 

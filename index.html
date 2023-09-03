@@ -23,9 +23,9 @@
     <div class="outer-container">
       <h1>♦️♠️♣️♥️ Blackjack ♥️♣️♠️♦️</h1>
       <div class="rules">
-        <p>1. When you are ready to play, press "Deal"</p>
-        <p>2. If you want to draw another card, press "Hit"</p>
-        <p>3, If you do not want another card, press "Stand"</p>
+        <p>1. Press "Deal" when you are ready to play</p>
+        <p>2. Press "Hit" if you want to draw another card</p>
+        <p>3, Press "Stand" if you do not want another card</p>
         <p>
           Learn the rules of Blackjack
           <a
@@ -41,7 +41,7 @@
           <input
             type="button"
             value="Restart"
-            class="btn btn-primary shadow-sm"
+            class="btn btn-primary shadow-sm m-2"
             onclick="window.location.reload()"
           />
         </div>
@@ -49,7 +49,7 @@
           <input
             type="button"
             value="Deal"
-            class="btn btn-primary shadow-sm"
+            class="btn btn-primary shadow-sm m-2"
             onclick="dealCards()"
           />
         </div>
@@ -58,7 +58,7 @@
           <input
             type="button"
             value="Hit"
-            class="btn btn-primary shadow-sm"
+            class="btn btn-primary shadow-sm m-2"
             onclick="getPlayerCard()"
           />
         </div>
@@ -66,27 +66,21 @@
           <input
             type="button"
             value="Stand"
-            class="btn btn-primary shadow-sm"
+            class="btn btn-primary shadow-sm m-2"
             onclick="standCard()"
           />
         </div>
       </div>
       <div class="container">
-        <div class="row">
+        <div class="d-flex flex-column flex-md-row">
           <div class="col">
             <h2>Player</h2>
-            <div class="row card-box" id="playerHand">
-              <!-- <div class="col card" id="playerCard1"></div>
-              <div class="col card" id="playerCard2"></div> -->
-            </div>
+            <div class="row" id="playerHand"></div>
             <p class="total">Total:<span id="playerTotal"></span></p>
           </div>
           <div class="col">
             <h2>Dealer</h2>
-            <div class="row card-box" id="dealerHand">
-              <!-- <div class="col card" id="dealerCard"></div>
-              <div class="col card" id="dealerCard2"></div> -->
-            </div>
+            <div class="row" id="dealerHand"></div>
             <p class="total">Total:<span id="dealerTotal"></span></p>
           </div>
         </div>

@@ -10,6 +10,7 @@ body {
   padding: 10px;
 }
 h1 {
+  background: rgba(224, 224, 224, 0.1);
   border: 5px solid black;
   border-radius: 10px;
   color: black;
@@ -25,45 +26,47 @@ h2 {
 .rules {
   color: black;
   font-family: "Cookie", cursive;
-  font-size: 22px;
-  line-height: 7px;
+  font-size: 30px;
+  line-height: 20px;
   margin: 25px auto;
   text-align: center;
 }
 .rules-link {
   color: black;
-  text-decoration: none;
 }
 .rules-link:hover {
   text-decoration: underline;
+  transition: all 100ms ease-in-out;
 }
 .buttons-box {
   margin: 40px 25px;
 }
 .card-box {
+  background: rgba(224, 224, 224, 0.1);
   border: 2px solid black;
   border-radius: 10px;
-  margin: 0px;
+  margin: 10px;
   padding: 30px 10px;
 }
 
 .card {
-  border: 2px solid black;
+  border: 6px solid black;
   border-radius: 10px;
   padding: 70px 10px;
   margin: 3px;
   text-align: center;
+  background-color: rgb(221, 221, 221);
 }
 .total {
+  color: #0b5ed7;
   font-size: 28px;
   font-weight: 500;
 }
 #dealerTotal,
 #playerTotal {
-  color: #0b5ed7;
+  color: black;
 }
 footer {
-  /* color: #0b5ed7; */
   font-size: 13px;
   margin: 13px auto 0px;
   max-width: 400px;
@@ -74,4 +77,15 @@ footer {
   color: black;
   font-weight: 800;
   text-decoration: none;
+}
+
+.code-link:hover {
+  text-decoration: underline;
+  transition: all 100ms ease-in-out;
+}
+
+@media (max-width: 530px) {
+  .rules {
+    font-size: 18px;
+  }
 }
