@@ -21,50 +21,12 @@ function getCard() {
   var randomSuit = suit[Math.floor(Math.random() * 4)];
   var value = getCardValue(randomNum);
   var card = randomNum + randomSuit;
-  console.log(card);
   if (cardArray.includes(card) === true) {
     return getCard();
   } else {
     cardArray.push(card);
-    console.log(cardArray);
     return [card, value];
   }
-}
-
-function getPlayerCard1() {
-  var card = getCard();
-  $("#playerCard1").text(`${card[0]}`);
-  playerCards.push(card[1]);
-}
-
-function getPlayerCard2() {
-  var card = getCard();
-  $("#playerCard2").text(`${card[0]}`);
-  playerCards.push(card[1]);
-  let sum = playerCards.reduce((a, b) => a + b);
-  $("#playerTotal").text(`${sum}`);
-}
-
-function getDealerCard1() {
-  var card = getCard();
-  $("#dealerCard").text(`${card[0]}`);
-  dealerCards.push(card[1]);
-  let sum = dealerCards.reduce((a, b) => a + b);
-  $("#dealerTotal").text(`${sum}`);
-}
-
-function getDealerCard2() {
-  var card = getCard();
-  $("#dealerCard2").text(`${card[0]}`);
-  dealerCards.push(card[1]);
-  let sum = dealerCards.reduce((a, b) => a + b);
-  $("#dealerTotal").text(`${sum}`);
-}
-
-function dealCards() {
-  getPlayerCard1();
-  getPlayerCard2();
-  getDealerCard1();
 }
 
 function playerSum() {
@@ -76,9 +38,8 @@ function playerSum() {
   }
 }
 
-function hitCard() {
+function getPlayerCard() {
   var card = getCard();
-  console.log(card);
   var newCard = $("<div>");
   newCard.text(`${card[0]}`);
   newCard.addClass("col card");
@@ -101,8 +62,7 @@ function dealerSum() {
   }
 }
 
-function getAnotherCard() {
-  console.log(getCard());
+function getDealerCard() {
   var card = getCard();
   var newCard = $("<div>");
   newCard.text(`${card[0]}`);
@@ -111,6 +71,12 @@ function getAnotherCard() {
   dealerCards.push(card[1]);
   let sum = dealerSum();
   $("#dealerTotal").text(`${sum}`);
+}
+
+function dealCards() {
+  getPlayerCard();
+  getPlayerCard();
+  getDealerCard();
 }
 
 function compareHands() {
@@ -131,7 +97,7 @@ function checkDealerHand() {
   if (sum > 21) {
     alert(`Congratulation, the dealer bust -- you won the game!`);
   } else if (sum < 18) {
-    getAnotherCard();
+    getDealerCard();
     checkDealerHand();
   } else {
     compareHands();
@@ -139,6 +105,6 @@ function checkDealerHand() {
 }
 
 function standCard() {
-  getDealerCard2();
+  getDealerCard();
   checkDealerHand();
 }
