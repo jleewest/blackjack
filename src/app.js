@@ -21,10 +21,12 @@ function getCard() {
   var randomSuit = suit[Math.floor(Math.random() * 4)];
   var value = getCardValue(randomNum);
   var card = randomNum + randomSuit;
+  console.log(card);
   if (cardArray.includes(card) === true) {
-    getCard();
+    return getCard();
   } else {
     cardArray.push(card);
+    console.log(cardArray);
     return [card, value];
   }
 }
@@ -55,7 +57,7 @@ function getDealerCard2() {
   var card = getCard();
   $("#dealerCard2").text(`${card[0]}`);
   dealerCards.push(card[1]);
-  sum = dealerCards.reduce((a, b) => a + b);
+  let sum = dealerCards.reduce((a, b) => a + b);
   $("#dealerTotal").text(`${sum}`);
 }
 
@@ -65,19 +67,24 @@ function dealCards() {
   getDealerCard1();
 }
 
-function hitCard() {
-  var card = getCard();
-  var newCard = $("<div>");
-  newCard.text(`${card[0]}`);
-  newCard.addClass("col card");
-  $("#playerHand").append(newCard);
-  playerCards.push(card[1]);
-  sum = playerCards.reduce((a, b) => a + b);
+function playerSum() {
+  let sum = playerCards.reduce((a, b) => a + b);
   if (sum > 21 && playerCards.includes(11) === true) {
     sum = sum - 10;
   } else {
     return sum;
   }
+}
+
+function hitCard() {
+  var card = getCard();
+  console.log(card);
+  var newCard = $("<div>");
+  newCard.text(`${card[0]}`);
+  newCard.addClass("col card");
+  $("#playerHand").append(newCard);
+  playerCards.push(card[1]);
+  let sum = playerSum();
   $("#playerTotal").text(`${sum}`);
   if (sum > 21) {
     alert(
@@ -85,20 +92,24 @@ function hitCard() {
     );
   }
 }
+function dealerSum() {
+  let sum = dealerCards.reduce((a, b) => a + b);
+  if (sum > 21 && dealerCards.includes(11) === true) {
+    sum = sum - 10;
+  } else {
+    return sum;
+  }
+}
 
 function getAnotherCard() {
+  console.log(getCard());
   var card = getCard();
   var newCard = $("<div>");
   newCard.text(`${card[0]}`);
   newCard.addClass("col card");
   $("#dealerHand").append(newCard);
   dealerCards.push(card[1]);
-  sum = dealerCards.reduce((a, b) => a + b);
-  if (sum > 21 && dealerCards.includes(11) === true) {
-    sum = sum - 10;
-  } else {
-    return sum;
-  }
+  let sum = dealerSum();
   $("#dealerTotal").text(`${sum}`);
 }
 
@@ -116,6 +127,7 @@ function compareHands() {
 }
 
 function checkDealerHand() {
+  let sum = dealerCards.reduce((a, b) => a + b);
   if (sum > 21) {
     alert(`Congratulation, the dealer bust -- you won the game!`);
   } else if (sum < 18) {

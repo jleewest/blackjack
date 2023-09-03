@@ -54,8 +54,16 @@ h2 {
   margin: 3px;
   text-align: center;
 }
-footer {
+.total {
+  font-size: 28px;
+  font-weight: 500;
+}
+#dealerTotal,
+#playerTotal {
   color: #0b5ed7;
+}
+footer {
+  /* color: #0b5ed7; */
   font-size: 13px;
   margin: 13px auto 0px;
   max-width: 400px;
@@ -63,6 +71,7 @@ footer {
 }
 
 .code-link {
+  color: black;
   font-weight: 800;
   text-decoration: none;
 }
