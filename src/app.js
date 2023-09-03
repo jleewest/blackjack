@@ -54,6 +54,7 @@ function getPlayerCard() {
     );
   }
 }
+
 function dealerSum() {
   let sum = dealerCards.reduce((a, b) => a + b);
   if (sum > 21 && dealerCards.includes(11) === true) {
@@ -97,7 +98,8 @@ function compareHands() {
 }
 
 function checkDealerHand() {
-  let sum = dealerCards.reduce((a, b) => a + b);
+  // let sum = dealerCards.reduce((a, b) => a + b);
+  let sum = dealerSum();
   if (sum > 21) {
     alert(`Congratulation, the dealer bust -- you won the game!`);
   } else if (sum < 18) {
@@ -107,6 +109,12 @@ function checkDealerHand() {
     compareHands();
   }
 }
+// if (sum > 21 && dealerCards.includes(11) === true) {
+//   sum = sum - 10;
+//   return sum;
+// } else {
+//   return sum;
+// }
 
 function standCard() {
   getDealerCard();
