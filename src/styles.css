@@ -14,7 +14,7 @@ h1 {
   border: 5px solid black;
   border-radius: 10px;
   color: black;
-  font-family: "Cookie", cursive;
+  font-family: 'Cookie', cursive;
   font-size: calc(2.375rem + 1.5vw);
   margin: 20px;
   padding: 20px;
@@ -25,7 +25,7 @@ h2 {
 }
 .rules {
   color: black;
-  font-family: "Cookie", cursive;
+  font-family: 'Cookie', cursive;
   font-size: 30px;
   line-height: 20px;
   margin: 25px auto;
@@ -45,17 +45,20 @@ h2 {
   background: rgba(224, 224, 224, 0.1);
   border: 2px solid black;
   border-radius: 10px;
+  display: block;
   margin: 10px;
   padding: 30px 10px;
 }
 
 .card {
+  background-color: rgb(221, 221, 221);
   border: 6px solid black;
   border-radius: 10px;
+  display: inline-block;
   padding: 70px 10px;
   margin: 3px;
+  max-width: 116px;
   text-align: center;
-  background-color: rgb(221, 221, 221);
 }
 .total {
   color: #0b5ed7;
@@ -87,5 +90,10 @@ footer {
 @media (max-width: 530px) {
   .rules {
     font-size: 18px;
+  }
+
+  .card {
+    padding: 39px 10px;
+    max-width: 67px;
   }
 }
